@@ -30,16 +30,33 @@ public class MotionController : MonoBehaviour {
 
         if(controller.GetPressDown(gripButton) && pickup != null)
         {
-            pickup.transform.parent = this.transform;
-            pickup.GetComponent<Rigidbody>().useGravity = false; //This allows the object to be freely picked up and moved around.
+            Debug.Log(gameObject.name + " Grip Press on object");
+            //pickup.transform.parent = this.transform;
+            //pickup.GetComponent<Rigidbody>().useGravity = false; //This allows the object to be freely picked up and moved around.
         }
 
         if(controller.GetPressUp(gripButton) && pickup != null)
         {
-            pickup.transform.parent = null;
-            pickup.GetComponent<Rigidbody>().useGravity = true; //Make the held object be affected by gravity again.
+            Debug.Log(gameObject.name + " Grip Release on object");
+            //pickup.transform.parent = null;
+            //pickup.GetComponent<Rigidbody>().useGravity = true; //Make the held object be affected by gravity again.
         }
-    
+
+        if (controller.GetAxis() != Vector2.zero) //Gets position of finger when it's on the touchpad, writes it to console
+        {
+            Debug.Log(gameObject.name + controller.GetAxis());
+        }
+
+        if (controller.GetHairTriggerDown()) //Need to find out difference in SteamVR source code between HairTrigger and Trigger.
+        {
+            Debug.Log(gameObject.name + " Trigger Press");
+        }
+
+        if (controller.GetHairTriggerUp())
+        {
+            Debug.Log(gameObject.name + " Trigger Release");
+        }
+
     }
 
     /*
