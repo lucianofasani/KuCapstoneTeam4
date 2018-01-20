@@ -42,6 +42,7 @@ public class ControllerGrabObject : MonoBehaviour {
 
     private void GrabObject()
     {
+        //Moves the GameObject inside of the player's hand and removes it from the collidingObject variable
         objectInHand = collidingObject;
         collidingObject = null;
 
@@ -68,7 +69,7 @@ public class ControllerGrabObject : MonoBehaviour {
             objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
         }
 
-        objectInHand = null;
+        objectInHand = null; //Remove the reference to the GameObject that was in the player's hand since it should no longer be there
     }
 
     void Start()
